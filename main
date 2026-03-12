@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<label>Цена товара</label><br>
+<input type="number" id="price"><br><br>
+
+<label>Наценка</label><br>
+<input type="number" id="naprice"><br><br>
+
+<label>Первоначальный взнос</label><br>
+<input type="number" id="vznos"><br><br>
+
+<label>месяцы</label><br>
+<input type="number" id="month"><br><br>
+
+<button onclick="calculate()">Посчитать</button>
+<h3 id="result"></h3>
+
+<script>
+
+function calculate() {
+
+let price = Number(document.getElementById("price").value)
+let naprice = Number(document.getElementById("naprice").value)
+let vznos = Number(document.getElementById("vznos").value)
+let month = Number(document.getElementById("month").value)
+
+let napraprice = price - vznos
+let nipaprice = napraprice * naprice / 100
+let remange = nipaprice + napraprice
+let pramonth = remange / month
+
+document.getElementById("result").innerHTML =
+"ежемесячный платеж: " + pramonth.toFixed(2) + "<br>Наценка: " + nipaprice.toFixed(2);
+
+}
+
+</script>
+
+</body>
+
+</html>
