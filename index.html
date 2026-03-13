@@ -9,7 +9,7 @@ body{
   background:#3a1f12;
   font-family:'Lato',sans-serif;
   display:flex;
-  justify-content:flex_start;
+  justify-content:center;
   align-items:flex-start;
   margin:0;
   overflow:hidden;
@@ -23,7 +23,7 @@ body{
   color:white;
   border-radius:10px;
   box-sizing:border-box;
-  transform: scale(1) translateY(-20px);
+  transform: scale(2.2) translateY(-20px);
   transform-origin: top center;
 }
 
@@ -74,7 +74,7 @@ button{
   padding:10px;
   background:linear-gradient(to bottom,#e8c75a,#d9a323,#a66b00);
   color:white;
-  font-weight:700;
+  font-weight:900; /* текст жирнее */
   border:none;
   border-radius:6px;
   cursor:pointer;
@@ -97,15 +97,6 @@ button:hover{
   font-size:18px;
   color:black;
 }
-.text-header{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin-bottom:5px;
-  font-weight:bold;
-  color:white;
-  white-space: nowrap;
-}
 .big-text{
   background:white;
   border-radius:6px;
@@ -113,14 +104,10 @@ button:hover{
   color:black;
   min-height:90px;
   white-space:pre-line;
+  text-align: left; /* текст выровнен по левому краю */
 }
 .share-btn{
   margin-top:10px;
-}
-.copy-btn{
-  margin-top:10px;
-  padding:6px 10px;
-  font-size:13px;
 }
 </style>
 </head>
@@ -132,20 +119,20 @@ button:hover{
   <div class="input-box">
     <label>Цена товара</label>
     <div class="line"></div>
-    <input type="text" id="price" placeholder="100 000" oninput="formatInput(this)">
+    <input type="text" id="price" placeholder="100 000" oninput="formatInput(this)" inputmode="numeric">
   </div>
 
   <div class="input-box">
     <label>Первоначальный взнос</label>
     <div class="line"></div>
-    <input type="text" id="vznos" placeholder="20 000" oninput="formatInput(this)">
+    <input type="text" id="vznos" placeholder="20 000" oninput="formatInput(this)" inputmode="numeric">
   </div>
 </div>
 
 <div class="input-box">
   <label>Наценка (%)</label>
   <div class="line"></div>
-  <input type="text" id="naprice" value="20" oninput="updateSliderAndFormat(this)">
+  <input type="text" id="naprice" value="20" oninput="updateSliderAndFormat(this)" inputmode="numeric">
   <input type="range" min="0" max="100" value="20" class="slider" id="markupSlider">
 </div>
 
@@ -188,7 +175,7 @@ button:hover{
   </div>
 </div>
 
-<div class="text-header">Текст для отправки</div>
+<!-- Поле текста без заголовка -->
 <div class="big-text" id="finalText"></div>
 
 <button class="share-btn" onclick="shareText()">Отправить</button>
@@ -248,12 +235,6 @@ function calculate(){
   "Срок рассрочки: "+month+" мес.";
 
   document.getElementById("finalText").innerText = text;
-}
-
-function copyText(){
-  let text = document.getElementById("finalText").innerText;
-  if(text.trim() === "") return alert("Сначала рассчитайте рассрочку!");
-  navigator.clipboard.writeText(text);
 }
 
 function shareText(){
