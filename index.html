@@ -15,7 +15,6 @@ body{
   overflow:hidden;
   height:100vh;
 }
-
 .calculator{
   background:#6b3e26;
   padding:25px;
@@ -23,10 +22,9 @@ body{
   color:white;
   border-radius:10px;
   box-sizing:border-box;
-  transform: scale(1) translateY(-20px);
+  transform: scale(2.2) translateY(-20px);
   transform-origin: top center;
 }
-
 .row{
   display:flex;
   gap:15px;
@@ -97,6 +95,9 @@ button:hover{
   font-size:18px;
   color:black;
 }
+#totalCost {
+  font-size: 27px; /* крупнее в 1.5 раза */
+}
 .big-text{
   background:white;
   border-radius:6px;
@@ -104,7 +105,7 @@ button:hover{
   color:black;
   min-height:90px;
   white-space:pre-line;
-  text-align: left; /* текст выровнен по левому краю */
+  text-align:left;
 }
 .share-btn{
   margin-top:10px;
@@ -175,7 +176,7 @@ button:hover{
   </div>
 </div>
 
-<!-- Поле текста без заголовка -->
+<!-- Поле текста -->
 <div class="big-text" id="finalText"></div>
 
 <button class="share-btn" onclick="shareText()">Отправить</button>
@@ -219,10 +220,10 @@ function calculate(){
   if(!price || !month) return;
   if(vznos > price) vznos = price;
 
-  let markup = price * naprice/100;
-  let total = price + markup - vznos;
-  let monthly = Math.round(total/month);
-  let totalCostValue = price + markup;
+  let base = price - vznos;
+  let markup = base * naprice/100;
+  let totalCostValue = base + markup;
+  let monthly = Math.round(totalCostValue / month);
 
   document.getElementById("monthlyPayment").innerHTML = formatNumber(monthly) + " ₽";
   document.getElementById("markupAmount").innerHTML = formatNumber(Math.round(markup)) + " ₽";
