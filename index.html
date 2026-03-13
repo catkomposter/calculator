@@ -22,7 +22,7 @@ body{
   color:white;
   border-radius:10px;
   box-sizing:border-box;
-  transform: scale(1) translateY(-20px);
+  transform: scale(2.2) translateY(-20px);
   transform-origin: top center;
 }
 .row{
@@ -72,7 +72,7 @@ button{
   padding:10px;
   background:linear-gradient(to bottom,#e8c75a,#d9a323,#a66b00);
   color:white;
-  font-weight:900; /* текст жирнее */
+  font-weight:900;
   border:none;
   border-radius:6px;
   cursor:pointer;
@@ -154,21 +154,18 @@ button:hover{
   </select>
 </div>
 
-<!-- Общая стоимость сверху -->
 <div class="result-box" style="margin-bottom:15px;">
   <div class="result-title">Общая стоимость</div>
   <div class="line"></div>
   <div class="result-value" id="totalCost"></div>
 </div>
 
-<!-- Ряд с остальными результатами -->
 <div class="result-container">
   <div class="result-box">
     <div class="result-title">Ежемесячный платеж</div>
     <div class="line"></div>
     <div class="result-value" id="monthlyPayment"></div>
   </div>
-
   <div class="result-box">
     <div class="result-title">Торговая наценка</div>
     <div class="line"></div>
@@ -176,7 +173,6 @@ button:hover{
   </div>
 </div>
 
-<!-- Поле текста -->
 <div class="big-text" id="finalText"></div>
 
 <button class="share-btn" onclick="shareText()">Отправить</button>
